@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+<html lang="en">
+
+{% include 'head.html' %}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+    {% include 'navbar.html' %}
+
+    <div class="content-wrapper">
+        <div class="container body">
+            <div class="main_container">
+
+
+                <div class="right_col" role="main">
+                    <div class="row">
+                        <div class="page-title">
+                            <div class="title_left">
+                                <h3 style="margin-left:20px"> Report</h3>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                            <div class="well">
+                                <form class="form-horizontal" action="pf_pl_invoicedet" method="POST" >{% csrf_token %}
+                                    <fieldset>
+                                    <div class="control-group">
+                                      <div class="controls">
+                                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Acct ID</label>
+                                        <div class="input-prepend input-group">
+                                          <!--<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>-->
+                                          <!--<input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="03/18/2013 - 03/23/2013" />-->
+                                        <div class="fieldWrapper">
+                                            {{ form.acct_name }}
+                                        </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </fieldset>
+
+
+                                  <fieldset>
+                                    <div class="control-group">
+                                      <div class="controls">
+                                          <label class="control-label col-md-3 col-sm-3 col-xs-12">From Date</label>
+                                        <div class="input-prepend input-group">
+                                          <!--<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>-->
+                                          <!--<input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="03/18/2013 - 03/23/2013" />-->
+                                        <div class="fieldWrapper">
+                                            {{ form.date_from }}
+                                        </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </fieldset>
+
+                                  <fieldset>
+                                    <div class="control-group">
+                                      <div class="controls">
+                                          <label class="control-label col-md-3 col-sm-3 col-xs-12">To Date</label>
+                                        <div class="input-prepend input-group">
+                                          <!--<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>-->
+                                          <!--<input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="03/18/2013 - 03/23/2013" />-->
+                                        <div class="fieldWrapper">
+                                            {{ form.date_to }}
+                                        </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </fieldset>
+
+                                    <input type="submit" value="Submit" id="submit_report">
+                                </form>
+
+                               </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<script>
+$("#submit_report").click(function() {
+    $.ajax({
+          type:'POST',
+            url:'pf_pl_invoicedet',
+            data:{
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:searchSuccess,
+            dataType: 'html'
+        });
+
+   });
+
+   function searchSuccess(data, textStatus, jqXHR)
+   {
+        $('#myForm').html(data);
+   }
+
+</script>
+{% include 'table.html' %}
+{% include 'form_advanced.html' %}
+{% include 'footer.html' %}
+
+</html>

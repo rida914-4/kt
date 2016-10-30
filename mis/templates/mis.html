@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+<html lang="en">
+
+{% include 'head.html' %}
+
+
+<body class="hold-transition skin-green sidebar-mini">
+<div class="wrapper"> {% include 'navbar.html' %}
+    <div class="content-wrapper">
+        <div class="container body">
+            <div class="main_container">
+                <div class="right_col" role="main">
+                    <div class="row">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Cash Flow
+                                    </h2>
+
+                                    <div class="clearfix"></div>
+
+                                </div>
+                                <div class="x_content">
+                                    {{ form }}
+                                    <p class="text-muted font-13 m-b-30">
+                                    </p>
+                                    <br>
+                                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                            <li role="presentation" class="active"><a href="#tab_content1" id="home-tab"
+                                                                                      role="tab" data-toggle="tab"
+                                                                                      aria-expanded="true">Cash Analysis</a>
+                                            </li>
+                                            <li role="presentation" class=""><a href="#tab_content2" role="tab"
+                                                                                id="profile-tab" data-toggle="tab"
+                                                                                aria-expanded="false">Cash Receipts</a>
+                                            </li>
+                                            <li role="presentation" class=""><a href="#tab_content3" role="tab"
+                                                                                id="profile-tab2" data-toggle="tab"
+                                                                                aria-expanded="false">Vehicle Exp</a>
+                                            </li>
+                                            <li role="presentation" class=""><a href="#tab_content4" role="tab"
+                                                                                id="profile-tab3" data-toggle="tab"
+                                                                                aria-expanded="false">Deal Cancel</a>
+                                            </li>
+                                            <li role="presentation" class=""><a href="#tab_content5" role="tab"
+                                                                                id="profile-tab4" data-toggle="tab"
+                                                                                aria-expanded="false">Party</a>
+                                            </li>
+                                            <li role="presentation" class=""><a href="#tab_content6" role="tab"
+                                                                                id="profile-tab5" data-toggle="tab"
+                                                                                aria-expanded="false">Group</a>
+                                            </li>
+                                            <li role="presentation" class=""><a href="#tab_content7" role="tab"
+                                                                                id="profile-tab6" data-toggle="tab"
+                                                                                aria-expanded="false">Audit</a>
+                                            </li>
+                                        </ul>
+                                        <div id="myTabContent" class="tab-content">
+                                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1"
+                                                 aria-labelledby="home-tab">
+                                                            <div class="x_content">
+                                                              <table id="datatable-responsive"
+                                           class="table table-striped dt-responsive nowrap table-hover " cellspacing="0"
+                                           width="100%">
+                                        <thead style="background-color:#9df0e0;">
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>ID</th>
+                                            <th>Date</th>
+                                            <th>Asset</th>
+                                            <th>Office</th>
+                                            <th>Custodian</th>
+                                            <th>Bill</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for asset in assets %}
+                                        <tr>
+
+                                            <td>
+
+                                            </td>
+                                            <td><a href="/purchase/{{ asset.voucher_id }}" target="_blank">
+                                                    <!--<input name="{{ asset.voucher_id }}" type="hidden">-->
+                                                    <button  style=" background: transparent; color:#73879C;border: none">
+                                                        {{ asset.acct_id }}
+                                                    </button></a>
+                                            </td>
+                                            <td>
+                                                <!--<form method="post" action="purchase">-->
+                                                    <!--{% csrf_token %}-->
+                                                <a href="/purchase/{{ asset.voucher_id }}" target="_blank">
+                                                    <!--<input name="{{ asset.voucher_id }}" type="hidden">-->
+                                                    <button  style=" background: transparent; color:#73879C;border: none">
+                                                        {{ asset.acct_name}}
+                                                    </button></a>
+
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+
+                                                            </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab_content2"
+                                                 aria-labelledby="profile-tab">
+                                                <div class="x_content">
+                                                              <table class="table table-hover">
+                                                                <thead>
+                                                                  <tr>
+                                                                    <th>Name</th>
+                                                                  </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                {% for acct_name in sales_names %}
+                                                                  <tr>
+                                                                    <td><a href="/reports/{{ acct_name.file_name }}"><button  style=" background: transparent; color:#73879C;border: none">{{ acct_name.report_name }}</button></a></td>
+
+                                                                  </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                              </table>
+
+                                                            </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab_content3"
+                                                 aria-labelledby="profile-tab">
+                                                <div class="x_content">
+                                                              <table class="table table-hover">
+                                                                <thead>
+                                                                  <tr>
+                                                                    <th>Name</th>
+                                                                  </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                {% for acct_name in purchase_names %}
+                                                                  <tr>
+                                                                    <td><a href="/reports/{{ acct_name.file_name }}"><button  style=" background: transparent; color:#73879C;border: none">{{ acct_name.report_name }}</button></a></td>
+
+                                                                  </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                              </table>
+
+                                                            </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab_content4"
+                                                 aria-labelledby="profile-tab">
+                                                <div class="x_content">
+                                                              <table class="table table-hover">
+                                                                <thead>
+                                                                  <tr>
+                                                                    <th>Name</th>
+                                                                  </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                {% for acct_name in stock_names %}
+                                                                  <tr>
+                                                                    <td><a href="/reports/{{ acct_name.file_name }}"><button  style=" background: transparent; color:#73879C;border: none">{{ acct_name.report_name }}</button></a></td>
+
+                                                                  </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                              </table>
+
+                                                            </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab_content5"
+                                                 aria-labelledby="profile-tab">
+                                                <div class="x_content">
+                                                              <table class="table table-hover">
+                                                                <thead>
+                                                                  <tr>
+                                                                    <th>Name</th>
+                                                                  </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                {% for acct_name in party_names %}
+                                                                  <tr>
+                                                                    <td><a href="/reports/{{ acct_name.file_name }}"><button  style=" background: transparent; color:#73879C;border: none">{{ acct_name.report_name }}</button></a></td>
+
+                                                                  </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                              </table>
+
+                                                            </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab_content6"
+                                                 aria-labelledby="profile-tab">
+                                                </div>
+                                            </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content7"
+                                                 aria-labelledby="profile-tab">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--</div>-->
+                <!--&lt;!&ndash; /page content &ndash;&gt;-->
+                <!--</div>-->
+                {% include 'table.html' %}
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+{% include 'footer.html' %}

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+
+<html lang="en">
+
+{% include 'head.html' %}
+<script>
+    $(document).on('click', 'input', function () {
+
+    clicked = this.id;
+     var matches = clicked.match(/\d+/g);
+      if (matches != null) {
+
+          qtyid = 'id_tmpplinvoicedet_set-' + matches + '-qty'
+          rateid = 'id_tmpplinvoicedet_set-' + matches + '-rate'
+          amountid = 'id_tmpplinvoicedet_set-' + matches + '-itemtot'
+
+
+         var final = "#" + rateid + "," + "#" + qtyid
+			$(final).keyup(function () {
+
+          $('#' + amountid).val($('#' + qtyid).val() * $('#' + rateid).val());
+
+        var a1 = (isNaN(parseInt($('#id_tmpplinvoicedet_set-0-itemtot').val()))) ? 0 : parseInt($('#id_tmpplinvoicedet_set-0-itemtot').val());
+        var a2 = (isNaN(parseInt($('#id_tmpplinvoicedet_set-1-itemtot').val()))) ? 0 : parseInt($('#id_tmpplinvoicedet_set-1-itemtot').val());
+        var a3 = (isNaN(parseInt($('#id_tmpplinvoicedet_set-3-itemtot').val()))) ? 0 : parseInt($('#id_tmpplinvoicedet_set-2-itemtot').val());
+        var a4 = (isNaN(parseInt($('#id_tmpplinvoicedet_set-4-itemtot').val()))) ? 0 : parseInt($('#id_tmpplinvoicedet_set-3-itemtot').val());
+        var a5 = (isNaN(parseInt($('#id_tmpplinvoicedet_set-5-itemtot').val()))) ? 0 : parseInt($('#id_tmpplinvoicedet_set-4-itemtot').val());
+        var a6 = (isNaN(parseInt($('#id_tmpplinvoicedet_set-6-itemtot').val()))) ? 0 : parseInt($('#id_tmpplinvoicedet_set-5-itemtot').val());
+        var a7 = (isNaN(parseInt($('#id_tmpplinvoicedet_set-7-itemtot').val()))) ? 0 : parseInt($('#id_tmpplinvoicedet_set-6-itemtot').val());
+        var a8 = (isNaN(parseInt($('#id_tmpplinvoicedet_set-8-itemtot').val()))) ? 0 : parseInt($('#id_tmpplinvoicedet_set-7-itemtot').val());
+        var a9 = (isNaN(parseInt($('#id_tmpplinvoicedet_set-9-itemtot').val()))) ? 0 : parseInt($('#id_tmpplinvoicedet_set-8-itemtot').val());
+        var a10 = (isNaN(parseInt($('#id_tmpplinvoicedet_set-9-itemtot').val()))) ? 0 : parseInt($('#id_tmpplinvoicedet_set-9-itemtot').val());
+
+      $('#id_net_amt').val(a1+a2+a3+a4+a5+a6+a7+a8+a9+a10);
+
+      });
+}
+
+});
+
+
+</script>
+<body class="hold-transition skin-blue sidebar-mini">
+
+<div class="wrapper">
+    <!--<div class="content-wrapper">-->
+    <div class="container body">
+        <div class="main_container">
+            <div class="clearfix"></div>
+
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <!-- Toolbar -->
+
+                            <div align="left">
+
+
+                                <a id="new" type="submit" class="btn btn-round btn-primary" name="new"
+                                   style="background:#A43780;border-color:#A43780;">
+                                    <span class="fa fa-plus" style="color:white;vertical-align:middle"></span>
+                                    New
+                                </a>
+                                <a id="save" type="submit" class="btn btn-round btn-primary"
+                                   style="background:#A43780;border-color:#A43780;">
+                                    <span class="fa fa-save" style="color:white;vertical-align:middle"></span>
+                                    Save
+                                </a>
+
+                                <a id="last" type="submit" class="btn btn-round btn-primary" title="First Voucher"
+                                   name="last"
+                                   style="background:#A43780;border-color:#A43780; color:white;align:left;">
+                                    <span class="glyphicon glyphicon-fast-backward"></span>
+                                </a>
+
+                                <a id="next" type="submit" class="btn btn-round btn-primary" title="Previous Voucher"
+                                   name="next"
+                                   style="background:#A43780;border-color:#A43780; color:white;align:left;">
+                                    <span class="glyphicon glyphicon-backward"></span>
+                                </a>
+
+                                <a id="previous" type="submit" class="btn btn-round btn-primary" title="Next Voucher"
+                                   name="previous"
+                                   style="background:#A43780;border-color:#A43780; color:white;align:left;">
+                                    <span class="glyphicon glyphicon-forward"></span>
+                                </a>
+
+                                <a id="first" type="submit" class="btn btn-round btn-primary" title="Last Voucher"
+                                   name="top"
+                                   style="background:#A43780;border-color:#A43780; color:white;align:left;">
+                                    <span class="glyphicon glyphicon-fast-forward"></span>
+                                </a>
+
+
+
+                                <a id="post" type="submit" class="btn btn-round btn-primary"
+                                   style="background:#008000;border-color:#008000;">
+                                    <span class="fa fa-remove" style="color:white;vertical-align:middle"></span>
+                                    Post
+                                </a>
+                                 <button type="button" class="btn btn-round btn-primary"
+                                        style="background:#f0ad4e;border-color:#f0ad4e;text-align:center"
+                                        onclick="window.print();">
+                                    <span class="fa fa-print" style="color:white;vertical-align:middle"></span>
+                                    Print
+                                </button>
+                                <a id="del" type="submit" class="btn btn-round btn-primary"
+                                   style="background:#A43780;border-color:#A43780;">
+                                    <span class="fa fa-remove" style="color:white;vertical-align:middle"></span>
+                                    Delete
+                                </a>
+                               <div style="float: right;" class="form"><strong>Search</strong>  <input type="text" name="search" id="search" ></div>
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+<form class="form-horizontal form-label-left input_mask" action="/main/" method="POST"
+                                  id="myForm">
+                                {% csrf_token %}
+                        <div class="x_title">
+                            <h2>Invoice</h2>
+                            {% if messages %}
+                            <div style="float: right;">
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>{% endif %}
+
+                        {% include 'form.html' %}
+
+                       </form>
+
+                        </div>
+                        <div id="search_results"></div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /page content -->
+    </div>
+    <!--</div>-->
+
+</div>
+</body>
+<script>
+
+                                                        $('#add_more').click(function() {
+                                                            cloneMore('tr.tablerow:last', 'service');
+                                                        });
+                                                        $(document).ready(function(){
+                                                                $('#qty').keyup(calculate);
+                                                                $('#rate').keyup(calculate);
+                                                            });
+                                                            function calculate(e)
+                                                            {
+                                                                $('#amount').val($('#qty').val() * $('#rate').val());
+}
+
+function cloneMore(selector, type) {
+    var newElement = $(selector).clone(true);
+    var total = $('#id_' + type + '-TOTAL_FORMS').val();
+    newElement.find(':input').each(function() {
+        var name = $(this).attr('name').replace('-' + (total-1) + '-','-' + total + '-');
+        var id = 'id_' + name;
+        $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+    });
+    newElement.find('label').each(function() {
+        var newFor = $(this).attr('for').replace('-' + (total-1) + '-','-' + total + '-');
+        $(this).attr('for', newFor);
+    });
+    total++;
+    $('#id_' + type + '-TOTAL_FORMS').val(total);
+    $(selector).after(newElement);
+}
+
+
+//This is where we submit the form
+
+$("#save").click(function(e){
+    var frm = $('#myForm');
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+
+            },
+            error: function(data) {
+                alert('go!')
+            }
+        });
+        return false;
+   });
+
+
+</script>
+<script>
+
+
+
+if ($('#id_posted').is(':checked')) {
+    $("#save").attr("disabled", true);
+  } else {
+
+    $("#save").removeAttr('disabled');
+}
+
+
+$("#id_posted").select(function() {
+    $.ajax({
+          type:'POST',
+            url:'/post/',
+            data:{
+                voucher_id:$('#id_voucher_id').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:searchSuccess,
+            dataType: 'html'
+        });
+
+   });
+
+$("#search").keyup(function() {
+    $.ajax({
+          type:'POST',
+            url:'/search/',
+            data:{
+                voucher_id:$('#search').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:searchSuccess,
+            dataType: 'html'
+        });
+
+   });
+
+$("#del").click(function() {
+    $.ajax({
+          type:'POST',
+            url:'/del/',
+            data:{
+                voucher_id:$('#id_voucher_id').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:searchSuccess,
+            dataType: 'html'
+        });
+
+   });
+
+$("#previous").click(function() {
+    $.ajax({
+          type:'POST',
+            url:'/next/',
+            data:{
+                voucher_id:$('#id_voucher_id').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:searchSuccess,
+            dataType: 'html'
+        });
+
+   });
+
+$("#next").click(function() {
+
+    $.ajax({
+          type:'POST',
+            url:'/previous/',
+            data:{
+                voucher_id:$('#id_voucher_id').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:searchSuccess,
+            dataType: 'html'
+        });
+
+   });
+
+$("#last").click(function() {
+    $.ajax({
+          type:'POST',
+            url:'/last/',
+            data:{
+
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:searchSuccess,
+            dataType: 'html'
+        });
+
+   });
+
+$("#first").click(function() {
+    $.ajax({
+          type:'POST',
+            url:'/first/',
+            data:{
+
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:searchSuccess,
+            dataType: 'html'
+        });
+
+   });
+$("#new").click(function() {
+    $.ajax({
+          type:'POST',
+            url:'/new/',
+            data:{
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:searchSuccess,
+            dataType: 'html'
+        });
+
+   });
+
+   function searchSuccess(data, textStatus, jqXHR)
+   {
+        $('#myForm').html(data);
+   }
+
+
+</script>
+{% include 'form_advanced.html' %}
+{% include 'table.html' %}
+{% include 'footer.html' %}
+</html>

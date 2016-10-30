@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+{% load to_and %}
+<html lang="en">
+
+{% include 'head.html' %}
+
+
+<body class="hold-transition skin-green sidebar-mini">
+<div class="wrapper"> {% include 'navbar.html' %}
+    <div class="content-wrapper">
+        <div class="container body">
+            <div class="main_container">
+                <div class="right_col" role="main">
+                    <div class="row">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Party Trial</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Select Party</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="x_content">
+                                    <form class="form-horizontal form-label-left input_mask" action="/party_trial/" method="POST" id="">
+                                            {% csrf_token %}
+                                    <div class="col-md-3 col-sm-3 col-xs-12">{{ form.date_from }}</div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">{{ form.date_to }}</div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">{{ form.comp_name }}</div>
+                                    <button type="submit" class="btn btn-success">Search</button>
+                                        </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Party Trial Summary </h2>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="x_content">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr style="background-color:">
+                                            <th>Party ID</th>
+                                            <th>DB</th>
+                                            <th>CR</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for acct_name in party %}
+                                        <tr>
+                                            <td><a href="/party_trial/{{ acct_name.party_id  }}_{{ form.date_from.value | to_and }}_{{ form.date_to.value | to_and }}">
+                                                <button style=" background: transparent; color:#73879C;border: none">{{ acct_name.party_id  }}
+                                                </button>
+                                            </a></td>
+                                            <td><a href="/party_trial/{{ acct_name.party_id  }}_{{ form.date_from.value | to_and }}_{{ form.date_to.value | to_and }}">
+                                                <button style=" background: transparent; color:#73879C;border: none">{{ acct_name.db }}
+                                                </button>
+                                            </a></td>
+                                            <td><a href="/party_trial/{{ acct_name.party_id  }}_{{ form.date_from.value | to_and }}_{{ form.date_to.value | to_and }}">
+                                                <button style=" background: transparent; color:#73879C;border: none">{{ acct_name.cr }}
+                                                </button>
+                                            </a></td>
+
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include 'table.html' %}
+        </div>
+    </div>
+</body>
+{% include 'form_advanced.html' %}
+{% include 'footer.html' %}
+</html>
